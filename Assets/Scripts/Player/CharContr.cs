@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+// UNUSED
+
 public class CharContr : MonoBehaviour
 {
 	[SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.

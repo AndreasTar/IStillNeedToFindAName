@@ -23,10 +23,14 @@ public class PlantManager: MonoBehaviour
         GameObject tempobject = new GameObject("temp");
         tempobject.transform.Translate(ray.point);
 
-
+        // The Biome bound have to be a rectangle for this to work well ((i think) at least for now).
+        // we get the box dimensions basically, so if you fetch that and do some math depending on the center
+        // of the box, you can get a random position on the ground where the box is above
+        // (IDEA : make boxes be dynamic strength, meaning that a plant is more likely to spawn on a box with more strength
+        // and the boxes surrounding it will increase in strength as more plants grow, kinda like how forests happen.
+        // A tree will grow near already existing trees, due to the seed falling there, and the forest moves out slowly)
         string biome = "BiomeBound";
-        BoxCollider2D biomebound = GameObject.FindGameObjectWithTag(biome).GetComponent<BoxCollider2D>();
-        Vector3 temp = biomebound.bounds.size;
-        Debug.Log("Dimensions : x " + temp.x + ", y " + temp.y + ", z " + temp.z);
+        Vector3 biomebound = GameObject.FindGameObjectWithTag(biome).transform.localScale;
+        Debug.Log("Dimensions : x " + biomebound.x + ", y " + biomebound.y + ", z " + biomebound.z);
     }
 }
